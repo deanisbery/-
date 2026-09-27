@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Domain</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- App Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: "Inter", Arial, sans-serif;
+            overflow: hidden;
+        }
+
+
+        /* =========================================
+           WELCOME SCREEN
+        ========================================= */
+
+        .welcome-screen {
+            position: fixed;
+            inset: 0;
+            background: #000;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            z-index: 9999;
+
+            animation: welcomeSwipe 1.3s cubic-bezier(.77,0,.18,1) 2s forwards;
+        }
+
+        .welcome-content {
+            text-align: center;
+            animation: welcomeText 1s ease forwards;
+        }
+
+        .welcome-small {
+            font-size: 12px;
+            letter-spacing: 6px;
+            color: #666;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .welcome-title {
+            font-size: clamp(55px, 12vw, 130px);
+            font-weight: 700;
+            letter-spacing: -6px;
+        }
+
+
+        /* =========================================
+           MAIN WEBSITE
+        ========================================= */
+
+        .container {
+            width: 90%;
+            max-width: 750px;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -45%);
+
+            text-align: center;
+
+            opacity: 0;
+
+            animation: contentAppear 1.2s ease 2.4s forwards;
+        }
+
+
+        /* Background glow */
+
+        body::before {
+            content: "";
+
+            position: fixed;
+
+            width: 500px;
+            height: 500px;
+
+            background: rgba(255,255,255,0.035);
+
+            border-radius: 50%;
+
+            filter: blur(120px);
+
+            top: 10%;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            pointer-events: none;
+        }
+
+
+        /* =========================================
+           TEXT
+        ========================================= */
+
+        .hello {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            color: #666;
+
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(45px, 8vw, 85px);
+
+            font-weight: 700;
+
+            letter-spacing: -5px;
+
+            line-height: 1;
+
+            margin-bottom: 25px;
+        }
+
+        .name {
+            background: linear-gradient(
+                90deg,
+                #fff,
+                #777,
+                #fff
+            );
+
+            background-size: 200%;
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            animation: shine 5s linear infinite;
+        }
+
+
+        /* =========================================
+           DESCRIPTION
+        ========================================= */
+
+        .description {
+            color: #888;
+
+            font-size: 17px;
+
+            line-height: 1.8;
+
+            max-width: 550px;
+
+            margin: auto;
+        }
+
+        .description span {
+            color: #fff;
+        }
+
+
+        /* =========================================
+           SOCIAL ICONS
+        ========================================= */
+
+        .socials {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 18px;
+
+            margin-top: 40px;
+        }
+
+        .social {
+            width: 58px;
+            height: 58px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            border: 1px solid #292929;
+
+            border-radius: 50%;
+
+            color: #fff;
+
+            text-decoration: none;
+
+            font-size: 23px;
+
+            background: #080808;
+
+            transition: all .3s ease;
+        }
+
+        .social:hover {
+            transform: translateY(-7px) scale(1.08);
+
+            background: #fff;
+
+            color: #000;
+
+            border-color: #fff;
+
+            box-shadow:
+                0 10px 40px rgba(255,255,255,.12);
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .footer {
+            margin-top: 55px;
+
+            font-size: 10px;
+
+            letter-spacing: 4px;
+
+            color: #3f3f3f;
+        }
+
+
+        /* =========================================
+           ANIMATIONS
+        ========================================= */
+
+        @keyframes welcomeText {
+
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        @keyframes welcomeSwipe {
+
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-100%);
+            }
+
+        }
+
+
+        @keyframes contentAppear {
+
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -35%);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+
+        }
+
+
+        @keyframes shine {
+
+            0% {
+                background-position: 0%;
+            }
+
+            100% {
+                background-position: 200%;
+            }
+
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            h1 {
+                letter-spacing: -3px;
+            }
+
+            .description {
+                font-size: 15px;
+            }
+
+            .social {
+                width: 52px;
+                height: 52px;
+                font-size: 20px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         OPENING SCREEN
+    ========================================= -->
+
+    <div class="welcome-screen">
+
+        <div class="welcome-content">
+
+            <div class="welcome-small">
+                This is
+            </div>
+
+            <div class="welcome-title">
+                Krysburn
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================= -->
+
+    <main class="container">
+
+        <div class="hello">
+            Hello, I'm
+        </div>
+
+
+        <h1>
+            <span class="name">Krysburn.</span>
+        </h1>
+
+
+        <p class="description">
+
+            I am a <span>writer</span>, a reader, and a lover of poetry.
+
+            <br><br>
+
+            I find stories in ordinary moments,
+            meaning in simple words,
+            and entire worlds between the lines.
+
+            <br><br>
+
+            Writing is how I turn thoughts into stories,
+            feelings into poetry,
+            and imagination into something that can live beyond my mind.
+
+            <br><br>
+
+            <span>These are the words I leave behind.</span>
+
+        </p>
+
+
+        <!-- SOCIALS -->
+
+        <div class="socials">
+
+
+            <!-- INSTAGRAM -->
+
+            <a
+                class="social"
+                href="https://www.instagram.com/zxdd4n?stkn=eHZiaHpnMDZrbHV1"
+                target="_blank"
+                aria-label="Instagram"
+            >
+
+                <i class="fa-brands fa-instagram"></i>
+
+            </a>
+
+
+            <!-- TIKTOK -->
+
+            <a
+                class="social"
+                href="https://www.tiktok.com/@krysburn?_r=1&_t=ZS-9A4W7tJLPPi"
+                target="_blank"
+                aria-label="TikTok"
+            >
+
+                <i class="fa-brands fa-tiktok"></i>
+
+            </a>
+
+
+            <!-- DISCORD -->
+
+            <a
+                class="social"
+                href="https://discord.gg/FH226DYtK5"
+                target="_blank"
+                aria-label="Discord"
+            >
+
+                <i class="fa-brands fa-discord"></i>
+
+            </a>
+
+
+            <!-- GITHUB -->
+
+            <a
+                class="social"
+                href="https://github.com/deanisbery"
+                target="_blank"
+                aria-label="GitHub"
+            >
+
+                <i class="fa-brands fa-github"></i>
+
+            </a>
+
+
+        </div>
+
+
+        <div class="footer">
+            KRY S B U R N
+        </div>
+
+
+    </main>
+
+
+</body>
+</html>
